@@ -8,7 +8,25 @@
   
 </head>
 <body>
-<div id=container></div>
+  
+  <div id=container>
+    <header></header>
+    <nav></nav>
+    <main id='main'>
+      <div id='list'></div>
+      <button id='addTask'>Add task</button>
+    </main>
+  </div>
+
+  <div id='modalSheet'>
+    <form id='taskData'>
+      <label for="title">Task:</label>
+      <input type="text" id="taskName" name="taskName" required><br>
+      <label for="Author">Priority:</label>
+      <input type="text" id="priority" name="priority" required><br>
+      <input type="submit" id='submitTask'>
+  </form>
+  </div>
 
 <!-- bundled javascript -->
 <script src="main.js"></script>
