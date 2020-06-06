@@ -31,39 +31,12 @@ const submitButtonClick = (() => {
     });
 })();
 
-/*const addTaskDOM = (title, priority, project, position) => {
-    const list = document.getElementById('list');   
-    const task = document.createElement('div');
-    const taskRadio = document.createElement('input');
-    const taskTitle = document.createElement('div');
-    const taskPriority = document.createElement('div');
-
-    taskRadio.type = 'radio';
-
-    task.setAttribute('class', 'task');
-    task.setAttribute('data-position', position);
-    taskRadio.setAttribute('class', 'taskRadio');
-    taskTitle.setAttribute('class', 'taskTitle');
-    taskPriority.setAttribute('class', 'taskPriority');
-
-    taskTitle.innerHTML = title;
-    taskPriority.innerHTML = priority;
-
-    list.appendChild(task);
-    task.appendChild(taskRadio);
-    task.appendChild(taskTitle);
-    task.appendChild(taskPriority);
-
-    taskRadio.addEventListener('click', () => {
-        removeTask(task);
-    });
-};*/
-
 const addTaskDOM = (title, priority, project, position) => {
     const list = document.getElementById('list');   
     const task = document.createElement('div');
     const taskRadio = document.createElement('input');
     const taskTitle = document.createElement('div');
+    const taskProject = document.createElement('div');
     const taskPriority = document.createElement('div');
 
     taskRadio.type = 'radio';
@@ -72,14 +45,17 @@ const addTaskDOM = (title, priority, project, position) => {
     task.setAttribute('data-position', position);
     taskRadio.setAttribute('class', 'taskRadio');
     taskTitle.setAttribute('class', 'taskTitle');
+    taskProject.setAttribute('class', 'taskProject');
     taskPriority.setAttribute('class', 'taskPriority');
 
     taskTitle.innerHTML = title;
     taskPriority.innerHTML = priority;
+    taskProject.innerHTML = project;
 
     list.appendChild(task);
     task.appendChild(taskRadio);
     task.appendChild(taskTitle);
+    task.appendChild(taskProject);
     task.appendChild(taskPriority);
 
     taskRadio.addEventListener('click', () => {
@@ -135,27 +111,6 @@ const addProjectsDOM = (project) => {
         setCurrentProject(projectNav);
     });
 };
-
-const allTasksDOM = (() => {
-    const allTasks = document.getElementById('All tasks');
-    allTasks.addEventListener('click', () => {
-        setCurrentProject(allTasks);
-    });
-})();
-
-/* const addProjectToDropdown = (projectName) => {
-    const projectDropdown = document.getElementById('selectProject');
-    const newProject = document.createElement('option');
-    newProject.setAttribute('value', projectName);
-    newProject.innerHTML = projectName;
-    projectDropdown.appendChild(newProject);
-} */
-
-    /*const projectSelect = document.getElementById('selectProject');
-    const projectOption = document.createElement('option');
-    projectOption.setAttribute('value', project);
-    projectOption.innerHTML = project;
-    projectSelect.appendChild(projectOption);*/
 
 export {
     addTaskDOM,

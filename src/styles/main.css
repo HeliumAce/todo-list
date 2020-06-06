@@ -38,7 +38,7 @@ main {
 .task {
     background-color: rgb(247, 247, 247);
     border-bottom: .5px solid rgb(90, 90, 90);
-    height: 40px;
+    height: 80px;
 }
 
 #addTask {

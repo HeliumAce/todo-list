@@ -1,4 +1,5 @@
 import { addTaskDOM } from './domEvents'  
+import { currentProject } from './projectLogic'
 
 const allTasks = [];
 
@@ -13,27 +14,31 @@ const Task = (title, priority, project) => {
 const createTask = (title, priority, project) => {
     const newTask = Task(title, priority, project);
     allTasks.push(newTask);
-    render();
-    console.log(newTask.getProject());
-    console.log(allTasks);
+    renderTasks();
 };
 
 const removeTask = (task) => {
     allTasks.splice(task.dataset.position, 1);
-    render();
+    renderTasks();
 };
 
-const render = () => {
+const renderTasks = () => {
     let currentList = document.getElementById('list')
     currentList.innerHTML = '';
     for (let i = 0; i < allTasks.length; i++) {
         let currentTask = allTasks[i];
+        let taskProject = allTasks[i].getProject();
         let position = i;
-        currentTask.addTaskToList(position);
-    }
+        if (currentProject === 'All tasks') {
+            currentTask.addTaskToList(position);
+        } else if (taskProject === currentProject) {
+            currentTask.addTaskToList(position);
+        };
+    };
 };
 
 export {
     createTask,
-    removeTask
+    removeTask,
+    renderTasks
 };
