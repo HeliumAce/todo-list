@@ -1,1 +1,1 @@
-import { } from './domEvents'
+import { } from './domEvents';
