@@ -36,6 +36,8 @@ const submitButtonClick = (() => {
 const addTaskDOM = (title, priority, project, due, description, position) => {
     const list = document.getElementById('list');   
     const task = document.createElement('div');
+    const taskTop = document.createElement('div');
+    const taskBottom = document.createElement('div');
     const taskRadio = document.createElement('input');
     const taskTitle = document.createElement('div');
     const taskProject = document.createElement('div');
@@ -47,6 +49,8 @@ const addTaskDOM = (title, priority, project, due, description, position) => {
 
     task.setAttribute('class', 'task');
     task.setAttribute('data-position', position);
+    taskTop.setAttribute('class', 'taskTop');
+    taskBottom.setAttribute('class', 'taskBottom');
     taskRadio.setAttribute('class', 'taskRadio');
     taskTitle.setAttribute('class', 'taskTitle');
     taskProject.setAttribute('class', 'taskProject');
@@ -55,22 +59,36 @@ const addTaskDOM = (title, priority, project, due, description, position) => {
     taskDescription.setAttribute('class', 'taskDescription');
 
     taskTitle.innerHTML = title;
-    taskPriority.innerHTML = priority;
-    taskProject.innerHTML = project;
-    taskDue.innerHTML = due;
-    taskDescription.innerHTML = description;
+    taskPriority.innerHTML = `<strong>Priority: </strong> ${priority}`;
+    taskProject.innerHTML = `<strong>Project: </strong> ${project}`;
+    taskDue.innerHTML = `<strong>Complete by: </strong> ${due}`;
+    taskDescription.innerHTML = `<strong>Description: </strong><br> <p>${description}</p>`;;
 
     list.appendChild(task);
-    task.appendChild(taskRadio);
-    task.appendChild(taskTitle);
-    task.appendChild(taskProject);
-    task.appendChild(taskPriority);
-    task.appendChild(taskDue);
-    task.appendChild(taskDescription);
+    task.appendChild(taskTop);
+    task.appendChild(taskBottom);
+    taskTop.appendChild(taskRadio);
+    taskTop.appendChild(taskTitle);
+    taskTop.appendChild(taskProject);
+    taskTop.appendChild(taskPriority);
+    taskTop.appendChild(taskDue);
+    taskBottom.appendChild(taskDescription);
 
+    task.addEventListener('click', () => {
+        expandDescription(taskBottom);
+    });
+    
     taskRadio.addEventListener('click', () => {
         removeTask(task);
     });
+};
+
+const expandDescription = (taskBottom) => {
+    if (taskBottom.style.display === 'block') {
+        taskBottom.style.display = 'none';
+    } else {
+        taskBottom.style.display = 'block';
+    };
 };
 
 //Projects DOM events start here
