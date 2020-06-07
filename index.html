@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset='UTF-8'/>
   <title>Taskrrr</title>
+  <link href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap' rel='stylesheet'>
   <link rel='stylesheet' href='../src/styles/reset.css'>
   <link rel='stylesheet' href='../src/styles/main.css'>
   
@@ -10,43 +11,62 @@
 <body>
   
   <div id=container>
-    <header></header>
+    <header>
+      Taskrrr
+    </header>
     <nav id='sidebar'>
-      <div id='projects'>
+      <div class='navList' id='projects'>
         <ul id='userProjects'></ul>
-        <button id='createProject'>Create project</button>
+        <button id='createProject'>+ Create project</button>
       </div>
     </nav>
     <main id='main'>
       <div id='list'></div>
-      <button id='addTask'>Add task</button>
+      <button id='addTask'>+ Add task</button>
     </main>
   </div>
 
   <div id='addTaskModal'>
-    <form id='taskData'>
-      <label for="title">Task:</label>
-      <input type="text" id="taskName" name="taskName" required><br>
-      <label for="Author">Priority:</label>
-      <input type="text" id="priority" name="priority" required><br>
-      <label for="selectProject">Project:</label>
-      <select id="selectProject" name="selectProject">
-        <option value="" disabled>Here is some info</option>
-      </select>
-      <input type="submit" id='submitTask'>
-  </form>
+    <div class='modalContent'>
+        <h3>Add task</h3>
+        <form class='modalForm' id='taskData'>
+          <label for='taskName'>Task:</label>
+          <input type='text' id='taskName' name='taskName' required><br>
+          <label for='priority'>Priority:</label>
+          <select id='priority' name='priority' required>
+            <option value='High'>High</option>
+            <option value='Medium'>Medium</option>
+            <option value='Low'>Low</option>
+          </select><br>
+          <label for='selectProject'>Project:</label>
+          <select id='selectProject' name='selectProject'>
+            <option value='' disabled>Here is some info</option>
+          </select>
+          <br>
+          <label for='dueDate'>Complete by:</label>
+          <input type='date' id='dueDate' name='dueDate'>
+          <br>
+          <label for='description'>Description:</label>
+          <textarea id='description' name='description' required></textarea>
+          <br>
+          <input type='submit' id='submitTask'>
+      </form>
+    </div>
   </div>
 
   <div id='createProjectModal'>
-    <form id='projectData'>
-      <label for="projectName">Project:</label>
-      <input type="text" id="projectName" name="projectName" required><br>
-      <input type="submit" id='submitProject'>
-    </form>
+    <div class='modalContent'>
+      <h3>Create project</h3>
+      <form class='modalForm' id='projectData'>
+        <label for='projectName'>Project:</label>
+        <input type='text' id='projectName' name='projectName' required><br>
+        <input type='submit' id='submitProject'>
+      </form>
+    </div>
   </div>
 
 <!-- bundled javascript -->
-<script src="main.js"></script>
+<script src='main.js'></script>
 
 </body>
 </html>
