@@ -23,21 +23,25 @@ const submitButtonClick = (() => {
     const taskName = document.getElementById('taskName');
     const taskPriority = document.getElementById('priority');
     const projectName = document.getElementById('selectProject');
+    const dueDate = document.getElementById('dueDate');
+    const description = document.getElementById('description');
     submitTaskButton.addEventListener('click', (e) => {
         //console.log(taskName.value);
-        createTask(taskName.value, taskPriority.value, projectName.value);
+        createTask(taskName.value, taskPriority.value, projectName.value, dueDate.value, description.value);
         hideModal();
         e.preventDefault();
     });
 })();
 
-const addTaskDOM = (title, priority, project, position) => {
+const addTaskDOM = (title, priority, project, due, description, position) => {
     const list = document.getElementById('list');   
     const task = document.createElement('div');
     const taskRadio = document.createElement('input');
     const taskTitle = document.createElement('div');
     const taskProject = document.createElement('div');
     const taskPriority = document.createElement('div');
+    const taskDue = document.createElement('div');
+    const taskDescription = document.createElement('div');
 
     taskRadio.type = 'radio';
 
@@ -47,16 +51,22 @@ const addTaskDOM = (title, priority, project, position) => {
     taskTitle.setAttribute('class', 'taskTitle');
     taskProject.setAttribute('class', 'taskProject');
     taskPriority.setAttribute('class', 'taskPriority');
+    taskDue.setAttribute('class', 'taskDue');
+    taskDescription.setAttribute('class', 'taskDescription');
 
     taskTitle.innerHTML = title;
     taskPriority.innerHTML = priority;
     taskProject.innerHTML = project;
+    taskDue.innerHTML = due;
+    taskDescription.innerHTML = description;
 
     list.appendChild(task);
     task.appendChild(taskRadio);
     task.appendChild(taskTitle);
     task.appendChild(taskProject);
     task.appendChild(taskPriority);
+    task.appendChild(taskDue);
+    task.appendChild(taskDescription);
 
     taskRadio.addEventListener('click', () => {
         removeTask(task);

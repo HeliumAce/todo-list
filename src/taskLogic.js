@@ -3,16 +3,16 @@ import { currentProject } from './projectLogic'
 
 const allTasks = [];
 
-const Task = (title, priority, project) => {
-    const addTaskToList = (position) => addTaskDOM(title, priority, project, position);
-    const getTitle = () => title;
-    const getPriority = () => priority;
+const Task = (title, priority, project, due, description) => {
+    const addTaskToList = (position) => addTaskDOM(title, priority, project, due, description, position);
+    //const getTitle = () => title;
+    //const getPriority = () => priority;
     const getProject = () => project;
     return { addTaskToList, getProject }
 };
 
-const createTask = (title, priority, project) => {
-    const newTask = Task(title, priority, project);
+const createTask = (title, priority, project, due, description) => {
+    const newTask = Task(title, priority, project, due, description);
     allTasks.push(newTask);
     renderTasks();
 };

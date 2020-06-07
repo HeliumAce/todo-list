@@ -1,20 +1,34 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
 #container {
     display: grid;
-    grid-template-columns: 160px 1fr;
-    grid-template-rows: 40px 1fr;
+    grid-template-columns: 180px 1fr;
+    grid-template-rows: 52px 1fr;
     height: 100vh;
 }
 
 header {
     grid-row: 1 / span 1;
     grid-column: 1 / span 2;
-    background-color: red;
+    background-color: #e50914;
+    color: #f1efef;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    font-style: italic;
+    padding: 8px 12px;
 }
 
 nav {
     grid-row: 2 / span 1;
     grid-column: 1 / span 1;
-    background-color: aliceblue;
+    background-color: #131c25;
+    color: #f1efef;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 24px 12px;
 }
 
 main {
@@ -57,7 +71,7 @@ main {
     background-color: rgba(0,0,0,0.4);
 }
 
-#taskData, #projectData {
+.modalContent {
     width: 360px;
     background-color: #fefefe;
     border-radius: 4px;
@@ -66,6 +80,67 @@ main {
     border: 1px solid #888;
 }
 
+.modalContent > h3{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
 .project {
     cursor: pointer;
+    margin-bottom: 12px;
+}
+
+#createProject, input[type=submit] {
+    margin-top: 8px;
+    background-color: rgba(60, 115, 162, 0.9);  
+    border: none;
+    color: white;
+    height: 32px;
+    width: 156px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#createProject:hover {
+    background-color: rgba(60, 115, 162, 0.5);
+}
+
+input[type=submit]:hover {
+    background-color: rgba(60, 115, 162, 1.0);
+}
+
+#addTask {
+    text-align: left;
+    height: 40px;
+    padding: 8px;
+    border: .5px dotted rgba(60, 115, 162, 0.5);
+    background-color: transparent;
+    border-radius: 2px;
+    color: rgba(60, 115, 162, 0.9);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#addTask:hover {
+    background-color: rgba(60, 115, 162, 0.07);
+}
+
+.modalForm {
+    display: grid;
+}
+
+.modalForm > label {
+    margin-bottom: 4px;
+}
+
+li > .project {
+    color: green;
+}
+
+li:hover {
+    background-color: rgba(60, 115, 162, 0.5);
 }
