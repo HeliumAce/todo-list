@@ -77,6 +77,7 @@ main {
 
 .taskBottom {
     display: none;
+    padding-left: 32px;
 }
 
 .taskTop > div > strong {
@@ -139,7 +140,10 @@ main {
 
 .project {
     cursor: pointer;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+    height: 16px;
+    border-radius: 2px;
+    padding: 8px 8px;
 }
 
 #createProject, input[type=submit] {
@@ -198,10 +202,6 @@ input[type=submit]:hover {
 
 .modalForm > label {
     margin-bottom: 4px;
-}
-
-li > .project {
-    color: green;
 }
 
 li:hover {
