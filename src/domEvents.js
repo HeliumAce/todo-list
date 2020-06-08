@@ -10,6 +10,8 @@ const taskButtonClick = (() => {
 
 const showModal = () => {
     const addTaskModal = document.getElementById('addTaskModal');
+    const projectName = document.getElementById('selectProject');
+    projectName.value = currentProject;
     addTaskModal.style.display = 'block';
 };
 
@@ -26,6 +28,7 @@ const submitButtonClick = (() => {
     const projectName = document.getElementById('selectProject');
     const dueDate = document.getElementById('dueDate');
     const description = document.getElementById('description');
+    
     submitTaskButton.addEventListener('click', (e) => {
         if (!taskName.value) {
             alert('Task name is required');
