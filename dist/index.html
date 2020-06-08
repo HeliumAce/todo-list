@@ -31,9 +31,9 @@
         <h3>Add task</h3>
         <form class='modalForm' id='taskData'>
           <label for='taskName'>Task:</label>
-          <input type='text' id='taskName' name='taskName' required><br>
+          <input type='text' id='taskName' name='taskName'><br>
           <label for='priority'>Priority:</label>
-          <select id='priority' name='priority' required>
+          <select id='priority' name='priority'>
             <option value='High'>High</option>
             <option value='Medium'>Medium</option>
             <option value='Low'>Low</option>
@@ -47,9 +47,12 @@
           <input type='date' id='dueDate' name='dueDate'>
           <br>
           <label for='description'>Description:</label>
-          <textarea id='description' name='description' required></textarea>
+          <textarea id='description' name='description'></textarea>
           <br>
-          <input type='submit' id='submitTask'>
+          <div class='modalButtons'>
+            <input type='submit' id='submitTask'>
+            <button class='modalCancel' id='cancelTask'>Cancel</button>
+          </div>
       </form>
     </div>
   </div>
@@ -60,7 +63,10 @@
       <form class='modalForm' id='projectData'>
         <label for='projectName'>Project:</label>
         <input type='text' id='projectName' name='projectName' required><br>
-        <input type='submit' id='submitProject'>
+        <div class='modalButtons'>
+          <input type='submit' id='submitProject'>
+          <button class='modalCancel'id='cancelProject'>Cancel</button>
+        </div>
       </form>
     </div>
   </div>

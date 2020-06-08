@@ -20,6 +20,7 @@ const hideModal = () => {
 
 const submitButtonClick = (() => {
     const submitTaskButton = document.getElementById('submitTask');
+    const cancelTaskButton = document.getElementById('cancelTask');
     const taskName = document.getElementById('taskName');
     const taskPriority = document.getElementById('priority');
     const projectName = document.getElementById('selectProject');
@@ -28,9 +29,22 @@ const submitButtonClick = (() => {
     submitTaskButton.addEventListener('click', (e) => {
         //console.log(taskName.value);
         createTask(taskName.value, taskPriority.value, projectName.value, dueDate.value, description.value);
+        clearModal();
         hideModal();
         e.preventDefault();
     });
+
+    cancelTaskButton.addEventListener('click', (e) => {
+        clearModal();
+        hideModal();
+        e.preventDefault();
+    });
+
+    const clearModal = () => {
+        taskName.value = '';
+        description.value = '';
+    }
+
 })();
 
 const addTaskDOM = (title, priority, project, due, description, position) => {
@@ -57,6 +71,7 @@ const addTaskDOM = (title, priority, project, due, description, position) => {
     taskPriority.setAttribute('class', 'taskPriority');
     taskDue.setAttribute('class', 'taskDue');
     taskDescription.setAttribute('class', 'taskDescription');
+    taskDescription.setAttribute('id', 'descriptionText');
 
     taskTitle.innerHTML = title;
     taskPriority.innerHTML = `<strong>Priority: </strong> ${priority}`;
@@ -112,6 +127,7 @@ const hideProjectsModal = () => {
 
 const createProjectButtonClick = (() => {
     const createProjectButton = document.getElementById('submitProject');
+    const cancelProjectButton = document.getElementById('cancelProject');
     const projectName = document.getElementById('projectName');
     createProjectButton.addEventListener('click', (e) => {
         createProject(projectName.value);
@@ -119,6 +135,16 @@ const createProjectButtonClick = (() => {
         hideProjectsModal();
         e.preventDefault();
     });
+
+    cancelProjectButton.addEventListener('click', (e) => {
+        clearProjectsModal();
+        hideProjectsModal();
+        e.preventDefault();
+    });
+
+    const clearProjectsModal = () => {
+        projectName.value = '';
+    }
 })();
 
 const addProjectsDOM = (project) => {
