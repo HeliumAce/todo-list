@@ -27,11 +27,15 @@ const submitButtonClick = (() => {
     const dueDate = document.getElementById('dueDate');
     const description = document.getElementById('description');
     submitTaskButton.addEventListener('click', (e) => {
-        //console.log(taskName.value);
-        createTask(taskName.value, taskPriority.value, projectName.value, dueDate.value, description.value);
-        clearModal();
-        hideModal();
-        e.preventDefault();
+        if (!taskName.value) {
+            alert('Task name is required');
+            e.preventDefault();
+        } else {
+            createTask(taskName.value, taskPriority.value, projectName.value, dueDate.value, description.value);
+            clearModal();
+            hideModal();
+            e.preventDefault();
+        }
     });
 
     cancelTaskButton.addEventListener('click', (e) => {
@@ -130,11 +134,16 @@ const createProjectButtonClick = (() => {
     const cancelProjectButton = document.getElementById('cancelProject');
     const projectName = document.getElementById('projectName');
     createProjectButton.addEventListener('click', (e) => {
-        createProject(projectName.value);
-        //addProjectToDropdown(projectName.value);
-        hideProjectsModal();
-        highlightCurrentProject();
-        e.preventDefault();
+        if (!projectName.value) {
+            alert('Project name is required');
+            e.preventDefault();
+        } else {
+            createProject(projectName.value);
+            hideProjectsModal();
+            projectName.value = '';
+            highlightCurrentProject();
+            e.preventDefault();
+        }
     });
 
     cancelProjectButton.addEventListener('click', (e) => {
