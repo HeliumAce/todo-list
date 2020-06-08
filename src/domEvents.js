@@ -1,5 +1,5 @@
 import { createTask, removeTask } from './taskLogic'
-import { createProject, setCurrentProject } from './projectLogic'
+import { createProject, currentProject, setCurrentProject } from './projectLogic'
 
 const taskButtonClick = (() => {
     const addTaskButton = document.getElementById('addTask');
@@ -133,6 +133,7 @@ const createProjectButtonClick = (() => {
         createProject(projectName.value);
         //addProjectToDropdown(projectName.value);
         hideProjectsModal();
+        highlightCurrentProject();
         e.preventDefault();
     });
 
@@ -163,12 +164,29 @@ const addProjectsDOM = (project) => {
 
     projectNav.addEventListener('click', () => {
         setCurrentProject(projectNav);
+        highlightCurrentProject();
     });
+};
+
+const highlightCurrentProject = () => {
+    const projectList = document.getElementById('userProjects');
+    const projectHeader = document.getElementById('projectHeader');
+    for (let i = 0; i < projectList.children.length; i++) {
+        if (projectList.children[i].innerHTML === currentProject) {
+            //projectList.children[i].style.backgroundColor = 'rgba(60, 115, 162, 0.9)';
+            projectList.children[i].setAttribute('class', 'selectedProject')
+            projectHeader.innerHTML = currentProject;
+        } else {
+            //projectList.children[i].style.backgroundColor = 'transparent';
+            projectList.children[i].setAttribute('class', 'defaultProject');
+        }
+    }
 };
 
 export {
     addTaskDOM,
-    addProjectsDOM
+    addProjectsDOM,
+    highlightCurrentProject
 };
 
 
