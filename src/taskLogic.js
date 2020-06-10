@@ -1,5 +1,5 @@
 import { addTaskDOM } from './domEvents'  
-import { currentProject } from './projectLogic'
+import { currentProject, saveProjects } from './projectLogic'
 
 const allTasks = [];
 
@@ -23,6 +23,7 @@ const createTask = (title, priority, project, due, description) => {
 
 const removeTask = (task) => {
     window.localStorage.clear();
+    saveProjects();
     allTasks.splice(task.dataset.position, 1);
     saveTasks();
     renderTasks();

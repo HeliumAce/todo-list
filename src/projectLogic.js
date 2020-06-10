@@ -18,16 +18,24 @@ const renderProjects = () => {
 const createProject = (project) => {
     allProjects.push(project);
     renderProjects();
+    saveProjects();
 };
 
 const setCurrentProject = (projectNav) => {
     currentProject = projectNav.id
     renderTasks();
-}
+};
+
+const saveProjects = () => {
+    localStorage.setItem('savedProjects', JSON.stringify(allProjects));
+    //console.log(allProjects);
+};
 
 export {
     renderProjects,
     createProject,
+    saveProjects,
     setCurrentProject,
-    currentProject
+    currentProject,
+    allProjects
 };
