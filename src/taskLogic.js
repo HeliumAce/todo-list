@@ -5,15 +5,15 @@ const allTasks = [];
 
 const Task = (title, priority, project, due, description) => {
     const addTaskToList = (position) => addTaskDOM(title, priority, project, due, description, position);
-    //const getTitle = () => title;
-    //const getPriority = () => priority;
     const getProject = () => project;
+
     return { addTaskToList, getProject }
 };
 
 const createTask = (title, priority, project, due, description) => {
     const newTask = Task(title, priority, project, due, description);
     allTasks.push(newTask);
+    saveTasks();
     renderTasks();
 };
 
@@ -37,7 +37,18 @@ const renderTasks = () => {
     };
 };
 
+const saveTasks = () => {
+    localStorage.setItem('savedTasks', JSON.stringify(allTasks));
+};
+
+const loadTasks = (() => {
+    const retrieveTasks = JSON.parse(localStorage.getItem("savedTasks") || "[]");
+    console.log(retrieveTasks);
+    //renderTasks();
+})();
+
 export {
+    allTasks,
     createTask,
     removeTask,
     renderTasks
